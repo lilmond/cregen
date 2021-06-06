@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSEC Credit Cards Checker</title>
+        <style>
+            ::placeholder{
+                color: #5500ff;
+            }
+            *{
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-family: sans-serif;
+            }
+            body{
+                background-color: rgb(0, 0, 0);
+            }
+            .main_container{
+                text-align: center;
+                margin: 0 auto;
+                width: 90%;
+                max-width: 500px;
+            }
+            .main_container h1{
+                color: #5500ff;
+                font-size: 25px;
+                margin: 15px 0;
+            }
+            .main_container label{
+                color: #5500ff;
+                font-size: 12px;
+                font-weight: bold;
+                float: left;
+            }
+            .main_container textarea{
+                border: 4px solid #5500ff;
+                border-radius: 5px;
+                background-color: transparent;
+                font-size: 100%;
+                font-weight: bold;
+                color: #5500ff;
+                resize: none;
+                height: 160px;
+                width: 100%;
+            }
+            .main_container button{
+                background-color: #5500ff;
+                border-radius: 5px;
+                width: 100%;
+                height: 30px;
+                margin: 2px 0;
+                font-size: 130%;
+                font-weight: bold;
+            }
+            .main_container button:hover{
+                cursor: pointer;
+                color: rgb(200, 200, 200);
+            }
+            .main_container .output_box button{
+                width: 90px;
+                float: right;
+                margin: 0 0 0 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main_container">
+            <h1>CSEC CC Checker</h1>
+            <label>INPUT</label>
+            <textarea id="input" placeholder="1234567890123456|01|2030|123"></textarea>
+            <button class="initialize_button" onclick="initialize();">INITIALIZE</button>
+            <label>OUTPUT</label>
+            <div class="output_box">
+                <textarea id="output" placeholder="[INVALID]1234567890123456|01|2030|123&#10;[VALID]1234567890123456|01|2030|123"></textarea>
+                <button onclick="showvalidList();">VALID</button>
+                <button onclick="showinvalidList();">INVALID</button>
+                <button onclick="showallList();">ALL</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        var allList = [];
+        var validList = [];
+        var invalidList = [];
+        var running = false;
+        function initialize(){
+            if (running){
+                return;
+            }
+            running = true;
+            var ccList = [];
+            var inputbox = document.getElementById("input");
+            var outputbox = document.getElementById("output");
+            var inputboxValue = inputbox.value.trim();
+            var outputboxValue = outputbox.value.trim();
+            
+            var inputList = inputboxValue.split("\n");
+            for (var i in inputList)
+            {
+                try
+                {
+                    cc = inputList[i].split("|");
+                    cc_number = cc[0];
+                    cc_month = cc[1];
+                    cc_year = cc[2];
+                    cc_ccv = cc[3];
+                    if (cc_number != undefined && cc_month != undefined && cc_year != undefined && cc_ccv != undefined)
+                    {
+                        var ccJSON = {"cc_number": cc_number, "exp_month": cc_month, "exp_year": cc_year, "cc_ccv": cc_ccv};
+                        ccList.push(ccJSON);
+                    }
+                }
+                catch(err)
+                {
+                    console.log(err);
+                }
+            }
+            
+            var newInput = "";
+            for (var i in ccList)
+            {
+                var cc = ccList[i];
+                var cc_num = cc["cc_number"];
+                var cc_month = cc["exp_month"];
+                var cc_year = cc["exp_year"];
+                var cc_ccv = cc["cc_ccv"];
+                var newText = `${cc_num}|${cc_month}|${cc_year}|${cc_ccv}\n`;
+                newInput += newText;
+            }
+            inputbox.value = newInput;
+            
+            for (var i in ccList)
+            {
+                var cc = ccList[i];
+                var cc_num = cc["cc_number"];
+                var cc_month = cc["exp_month"];
+                var cc_year = cc["exp_year"];
+                var cc_ccv = cc["cc_ccv"];
+                
+                var isValid = check(cc_num, cc_ccv, cc_month, cc_year);
+                var ccFormat = `${cc_num}|${cc_month}|${cc_year}|${cc_ccv}`;
+                allList.push(ccFormat);
+                if (isValid)
+                {
+                    validList.push(ccFormat);
+                    appendOutput(`[VALID] ${ccFormat}`);
+                }
+                else
+                {
+                    invalidList.push(ccFormat);
+                    appendOutput(`[INVALID] ${ccFormat}`);
+                }
+            }
+            
+            running = false;
+        }
+        function check(cc_number, cc_ccv, exp_month, exp_year)
+        {
+            /* Create your own API here since I will not publicly teach anyone to know how to do this part. I'd recommend using Ajax framework for HTTP requests to avoid CORS errors. In this example, we will return random boolean value. */
+        var boolList = [true, false];
+        var rand_num = randint(2);
+        var rand_bool = boolList[rand_num];
+        return rand_bool;
+        }
+        
+        function randint(num)
+        {
+            var rand_num = Math.floor(Math.random() * num);
+            return rand_num;
+        }
+        
+        function appendOutput(text)
+        {
+            var outputbox = document.getElementById("output");
+            var text = text.trim();
+            outputbox.value += `${text}\n`;
+        }
+        
+        function showallList()
+        {
+            var outputbox = document.getElementById("output");
+            outputbox.value = "";
+            for (var i in validList)
+            {
+                var cc = validList[i];
+                var ccFormat = `[VALID] ${cc}`;
+                outputbox.value += `${ccFormat}\n`;
+            }
+            for (var i in invalidList)
+            {
+                var cc = invalidList[i];
+                var ccFormat = `[INVALID] ${cc}`;
+                outputbox.value += `${ccFormat}\n`;
+            }
+        }
+        
+        function showvalidList()
+        {
+            var outputbox = document.getElementById("output");
+            outputbox.value = "";
+            for (var i in validList)
+            {
+                var cc = validList[i];
+                var ccFormat = `[VALID] ${cc}`;
+                outputbox.value += `${ccFormat}\n`;
+            }
+        }
+        
+        function showinvalidList()
+        {
+            var outputbox = document.getElementById("output");
+            outputbox.value = "";
+            for (var i in invalidList)
+            {
+                var cc = invalidList[i];
+                var ccFormat = `[INVALID] ${cc}`;
+                outputbox.value += `${ccFormat}\n`;
+            }
+        }
+    </script>
+</html>
