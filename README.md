@@ -3,6 +3,8 @@ Test the generator out [here](https://htmlpreview.github.io/?https://raw.githubu
 
 Test the checker out [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lilmond/CC_Gen/main/checker.html)
 
+Take note that the checker is not real and it returns random validation output.
+
 Join CSEC: https://discord.gg/dZSDbjJPHx
 
 ## Caution
