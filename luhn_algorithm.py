@@ -1,3 +1,4 @@
+# Original Source: https://atufashireen.medium.com/luhn-algorithm-67c62e081238
 import random
 first_6=536595 # IIN For Banking Industry(6 digits)
 def luhn():
