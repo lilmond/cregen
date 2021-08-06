@@ -1,5 +1,5 @@
 # CC Gen
-Test the generator out [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lilmond/CC_Gen/main/cc_gen.html)
+Test the generator out [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lilmond/CC_Gen/main/cc_gen2.html)
 
 Test the checker out [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lilmond/CC_Gen/main/checker.html)
 
