@@ -32,5 +32,4 @@ def luhn():
     print(f"card_num = {card_num}")
     return ''.join(card_num)
 
-
 print(luhn())
