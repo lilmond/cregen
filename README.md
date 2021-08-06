@@ -10,7 +10,7 @@ Take note that the checker is not real and it returns random validation output f
 Join CSEC: https://discord.gg/dZSDbjJPHx
 
 ## Caution
-- This is for educational purposes only to understand how things like this works.
+- This content is for educational purposes only.
 - I am not encouraging you to use it for malicious purposes.
 - I will not be responsible for any missuses of this piece of code.
 
