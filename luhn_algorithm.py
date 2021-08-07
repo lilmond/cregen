@@ -1,6 +1,7 @@
 # Original Source: https://atufashireen.medium.com/luhn-algorithm-67c62e081238
+# Added it here to help you understand how Luhn Algorithm process works
 import random
-first_6=536595 # IIN For Banking Industry(6 digits)
+first_6=528192 # IIN For Banking Industry(6 digits)
 def luhn():
     global first_6  
     card_no = [int(i) for i in str(first_6)]  # To find the checksum digit on
