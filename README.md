@@ -16,4 +16,4 @@ Join CSEC: https://discord.gg/dZSDbjJPHx
 
 ## Screenshots
 
-![Screenshot](https://raw.githubusercontent.com/lilmond/CC_Gen/main/Screenshot%20at%202021-06-05%2020-59-24.png)
+![Screenshot](https://raw.githubusercontent.com/lilmond/CC-Gen/main/screenshots/screenshot1.png)
