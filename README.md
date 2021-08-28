@@ -9,8 +9,8 @@ Join CSEC: https://discord.gg/dZSDbjJPHx
 
 ## Caution
 - This content is for educational purposes only.
-- I am not encouraging you to use this for malicious purposes.
-- I will not be responsible for any missuses of this content.
+- I am not encouraging you to use this to steal money from people!
+- I will not be responsible for any misuses of this content.
 
 ## Screenshots
 
