@@ -1,5 +1,5 @@
 # Cregen
-Credit cards generator and validator.
+Credit cards generator and validator. Luhn algorithm implemented as far as I can remember.
 
 # Contents
 Generator - [Preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lilmond/CC_Gen/main/generator.html)
